@@ -10,6 +10,7 @@ print(products)
 for p in products:
     print(p[0], "的價格是 :", p[1])
 
-with open('product.csv', 'w') as f: # 開啟(沒有的話就建立)product.csv檔案，並設為寫入模式
+with open('product.csv', 'w', encoding = 'utf-8') as f: # 開啟(沒有的話就建立)product.csv檔案，並設為寫入模式
+    f.write('商品,價格\n')
     for p in products:
         f.write(p[0] + ',' + p[1] + '\n') # csv檔可用excel開啟，用逗號來放在excel的不同行，用\n來放在不同列
