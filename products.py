@@ -1,12 +1,18 @@
-# 打開文件檔，將文件檔內資料轉成list
+import os
+
+# 讀取文件檔，將文件檔內資料轉成list
 products = []
-with open('product.csv', 'r', encoding = 'utf-8') as f:
-    for line in f:
-        if '商品,價格' in line: # 跳過第一列資料
-            continue # 跳到迴圈下一round
-        name, price = line.strip().split(',') # 用split(',')來用逗點做分割，分割完的結果是list；用strip來除掉換行符號
-        products.append([name, price])
-print(products)
+if os.path.isfile('product.csv'):
+    print('yes, file found!')
+    with open('product.csv', 'r', encoding = 'utf-8') as f:
+        for line in f:
+            if '商品,價格' in line: # 跳過第一列資料
+                continue # 跳到迴圈下一round
+            name, price = line.strip().split(',') # 用split(',')來用逗點做分割，分割完的結果是list；用strip來除掉換行符號
+            products.append([name, price])
+    print(products)
+else:
+    print('oops, file not found!')
 
 # 輸入商品名稱、價格，並存到文件檔
 while True:
